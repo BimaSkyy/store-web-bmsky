@@ -5,20 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BmSkySocial</title>
 <meta name="description" content="Layanan sosial media TikTok, Instagram, dan YouTube dengan harga jelas per paket. Pesan lewat WhatsApp.">
-<meta name="theme-color" content="#B9D9FF">
+<meta name="theme-color" content="#B3D6FF">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231A64DB'/%3E%3Cpath d='M18 44V20h14a7 7 0 0 1 3 13 7.5 7.5 0 0 1-3 11H18z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#07214D;
-  --ink-soft:#40608F;
+  --ink-soft:#35568A;
   --blue:#1A64DB;
   --blue-dark:#1455B8;
-  --sky:#EEF6FF;
-  --sky-2:#D3E6FF;
-  --line:#D9E8FB;
+  --rule:rgba(7,33,77,.16);
+  --rule-soft:rgba(7,33,77,.1);
   --display:'Bricolage Grotesque','Figtree',system-ui,sans-serif;
   --body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
@@ -26,110 +25,112 @@
 html{-webkit-text-size-adjust:100%}
 body{
   font-family:var(--body);
+  font-size:1.0625rem;
   color:var(--ink);
-  line-height:1.5;
+  line-height:1.55;
   min-height:100vh;
   position:relative;
   overflow-x:hidden;
-  background-color:var(--sky);
-  background-image:linear-gradient(180deg,#B3D6FF 0,#D5E8FF 460px,var(--sky) 760px);
+  background-color:#F3F9FF;
+  background-image:linear-gradient(180deg,#A9D0FF 0,#CBE3FF 380px,#F3F9FF 820px);
   background-repeat:no-repeat;
 }
 body::before{
   content:"";
-  position:absolute;inset:0 0 auto 0;height:640px;pointer-events:none;
+  position:absolute;inset:0 0 auto 0;height:600px;pointer-events:none;
   background:
-    radial-gradient(280px 90px at 10% 16%,rgba(255,255,255,.85),transparent 70%),
-    radial-gradient(360px 110px at 82% 9%,rgba(255,255,255,.8),transparent 70%),
-    radial-gradient(320px 100px at 64% 44%,rgba(255,255,255,.55),transparent 70%),
-    radial-gradient(260px 80px at 18% 58%,rgba(255,255,255,.5),transparent 70%);
+    radial-gradient(280px 90px at 10% 14%,rgba(255,255,255,.8),transparent 70%),
+    radial-gradient(360px 110px at 84% 8%,rgba(255,255,255,.75),transparent 70%),
+    radial-gradient(320px 100px at 66% 40%,rgba(255,255,255,.5),transparent 70%);
 }
 a{color:inherit}
-.wrap{position:relative;max-width:960px;margin:0 auto;padding:0 1.25rem}
+.wrap{position:relative;max-width:980px;margin:0 auto;padding:0 1.4rem}
 
 /* header */
 .top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.9rem 1.5rem;padding:1.4rem 0 0}
-.brand{font-family:var(--display);font-weight:800;font-size:1.45rem;letter-spacing:-.03em;text-decoration:none}
-.nav{display:flex;gap:.4rem;overflow-x:auto;max-width:100%;padding:2px}
+.brand{font-family:var(--display);font-weight:800;font-size:1.5rem;letter-spacing:-.03em;text-decoration:none}
+.nav{display:flex;gap:1.4rem;overflow-x:auto;max-width:100%;padding:.2rem 2px}
 .nav a{
-  white-space:nowrap;text-decoration:none;font-weight:600;font-size:.95rem;
-  padding:.5rem 1rem;border-radius:999px;background:rgba(255,255,255,.6);
+  white-space:nowrap;text-decoration:none;font-weight:600;font-size:1rem;
+  padding:.35rem 0;border-bottom:2px solid transparent;
 }
-.nav a:hover{background:#fff}
-.nav a[aria-current="page"]{background:var(--ink);color:#fff}
+.nav a:hover{border-bottom-color:var(--rule)}
+.nav a[aria-current="page"]{border-bottom-color:var(--ink)}
 
 /* hero */
-.hero{padding:3.6rem 0 2.4rem;animation:rise .7s ease both}
+.hero{padding:4rem 0 3rem;animation:rise .7s ease both}
 .hero h1{
   font-family:var(--display);font-weight:800;
-  font-size:clamp(2.3rem,7.2vw,4.4rem);line-height:1.02;letter-spacing:-.035em;
-  max-width:17ch;
+  font-size:clamp(2.4rem,7.4vw,4.6rem);line-height:1.02;letter-spacing:-.035em;
+  max-width:16ch;
 }
-.hero p{margin-top:1.1rem;max-width:46ch;font-size:1.1rem;color:var(--ink-soft)}
-.hero .btn{margin-top:1.7rem}
+.hero p{margin-top:1.2rem;max-width:44ch;font-size:1.2rem;color:var(--ink-soft)}
+.hero .btn{margin-top:1.8rem}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 /* buttons */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
-  font:600 1rem var(--body);text-decoration:none;white-space:nowrap;
-  padding:.8rem 1.4rem;border-radius:999px;border:1.5px solid var(--blue);
+  font:700 1rem var(--body);text-decoration:none;white-space:nowrap;
+  padding:.85rem 1.5rem;border-radius:999px;border:2px solid var(--blue);
   background:var(--blue);color:#fff;cursor:pointer;
   transition:background .15s,color .15s,transform .15s;
 }
 .btn:hover{background:var(--blue-dark);border-color:var(--blue-dark)}
 .btn:active{transform:scale(.97)}
 .btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.btn.ghost{background:transparent;color:var(--blue);padding:.6rem 1.1rem;font-size:.95rem}
+.btn.ghost{background:transparent;color:var(--blue);padding:.55rem 1.1rem;font-size:.95rem}
 .btn.ghost:hover{background:var(--blue);color:#fff}
 :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 
-/* price panels */
-.panel{
-  background:rgba(255,255,255,.84);
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.95);
-  border-radius:28px;
-  box-shadow:0 26px 60px -30px rgba(10,50,120,.4);
-  padding:.35rem 1.5rem .5rem;margin-bottom:1.5rem;
+/* service sections: no boxes, only rules */
+.section{
+  display:grid;grid-template-columns:230px 1fr;gap:1.4rem 3.5rem;
+  padding:2.6rem 0 2.2rem;border-top:2px solid var(--ink);
 }
-.panel-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.2rem 0 1rem}
-.panel-head h2{font-family:var(--display);font-weight:800;font-size:1.7rem;letter-spacing:-.025em}
-.panel-head a{color:var(--blue);font-weight:600;font-size:.95rem;text-underline-offset:3px}
+.section.solo{grid-template-columns:1fr;max-width:760px}
+.section-head h2{font-family:var(--display);font-weight:800;font-size:2.1rem;line-height:1.1;letter-spacing:-.03em}
+.section-head p{margin-top:.6rem;color:var(--ink-soft);font-size:1rem}
+.section-head a{display:inline-block;margin-top:.9rem;color:var(--blue);font-weight:700;text-underline-offset:4px}
+
 .row{
-  display:grid;grid-template-columns:48px 1fr auto auto;align-items:center;gap:1rem;
-  padding:1rem 0;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:28px 1fr auto auto;align-items:center;gap:.4rem 1.2rem;
+  padding:1.15rem 0;border-bottom:1px solid var(--rule-soft);
 }
-.ico{width:48px;height:48px;border-radius:50%;background:var(--sky-2);color:var(--blue);display:grid;place-items:center}
-.ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.name{font-weight:700;font-size:1.05rem;line-height:1.25}
-.qty{color:var(--ink-soft);font-size:.92rem}
-.price{font-family:var(--display);font-weight:800;font-size:1.55rem;letter-spacing:-.02em;text-align:right;min-width:6.5rem}
+.row:first-child{padding-top:.2rem}
+.row:last-child{border-bottom:0}
+.ico{color:var(--blue);display:grid;place-items:center}
+.ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.name{font-weight:700;font-size:1.15rem;line-height:1.3}
+.qty{color:var(--ink-soft);font-size:1rem}
+.price{font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-.02em;text-align:right;white-space:nowrap}
 
 /* how to order */
-.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2.6rem 0 0}
-.steps li{padding-top:.9rem;border-top:2px solid var(--ink);font-size:.98rem}
-.steps b{display:block;font-family:var(--display);font-size:1.1rem;margin-bottom:.15rem}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;padding:2.4rem 0 0;border-top:2px solid var(--ink)}
+.steps b{display:block;font-family:var(--display);font-size:1.25rem;margin-bottom:.2rem}
 .steps span{color:var(--ink-soft)}
 
-.foot{padding:2.6rem 0 3rem;color:var(--ink-soft);font-size:.92rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 1.5rem}
+.foot{padding:2.8rem 0 3rem;color:var(--ink-soft);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 1.5rem;font-size:1rem}
 .foot strong{color:var(--ink)}
 
 .missing{padding:3rem 0}
-.missing h1{font-family:var(--display);font-size:2.2rem;font-weight:800;letter-spacing:-.03em}
+.missing h1{font-family:var(--display);font-size:2.3rem;font-weight:800;letter-spacing:-.03em}
 .missing p{margin:.6rem 0 1.4rem;color:var(--ink-soft)}
 
-@media (max-width:600px){
-  .hero{padding:2.4rem 0 1.8rem}
-  .panel{padding:.2rem 1.1rem .4rem;border-radius:24px}
+@media (max-width:760px){
+  .section{grid-template-columns:1fr;gap:1.2rem;padding:2rem 0 1.6rem}
+}
+@media (max-width:560px){
+  body{font-size:1rem}
+  .hero{padding:2.6rem 0 2.2rem}
   .row{
-    grid-template-columns:48px 1fr auto;
+    grid-template-columns:28px 1fr auto;
     grid-template-areas:"i t p" "b b b";
-    gap:.7rem 1rem;
+    gap:.8rem 1rem;
   }
   .row .ico{grid-area:i}
   .row .info{grid-area:t}
-  .row .price{grid-area:p;min-width:0}
+  .row .price{grid-area:p}
   .row .btn{grid-area:b;width:100%}
   .steps{grid-template-columns:1fr}
 }
@@ -209,8 +210,9 @@ a{color:inherit}
   };
   var ORDER = ["tiktok", "instagram", "youtube"];
 
+  // Format: Rp 1.000 (titik sebagai pemisah ribuan, tidak bergantung locale HP)
   function rupiah(n) {
-    return "Rp" + Number(n).toLocaleString("id-ID");
+    return "Rp\u00A0" + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
 
   function orderBtn(service, extraClass) {
@@ -229,18 +231,23 @@ a{color:inherit}
       '</div>';
   }
 
-  function panelHtml(slug, withLink) {
+  function listHtml(slug) {
+    return '<div class="list">' + DATA[slug].items.map(rowHtml).join("") + '</div>';
+  }
+
+  function sectionHtml(slug) {
     var p = DATA[slug];
-    return '<section class="panel" aria-labelledby="h-' + slug + '">' +
-      '<div class="panel-head"><h2 id="h-' + slug + '">' + p.name + '</h2>' +
-      (withLink ? '<a href="/service/' + slug + '">Buka halaman ' + p.name + '</a>' : '') +
-      '</div>' + p.items.map(rowHtml).join("") + '</section>';
+    return '<section class="section" aria-labelledby="h-' + slug + '">' +
+      '<div class="section-head"><h2 id="h-' + slug + '">' + p.name + '</h2>' +
+      '<p>' + p.desc + '</p>' +
+      '<a href="/service/' + slug + '">Buka halaman ' + p.name + '</a></div>' +
+      listHtml(slug) + '</section>';
   }
 
   var STEPS = '<ol class="steps">' +
-    '<li><b>Pilih layanan</b><span>Cari paket yang kamu butuhkan di daftar harga.</span></li>' +
-    '<li><b>Klik Pesan Sekarang</b><span>WhatsApp terbuka dengan pesan yang sudah terisi.</span></li>' +
-    '<li><b>Kirim link</b><span>Kirim link akun atau video, lalu lanjut pembayaran.</span></li>' +
+    '<li><b>1. Pilih layanan</b><span>Cari paket yang kamu butuhkan di daftar harga.</span></li>' +
+    '<li><b>2. Klik Pesan Sekarang</b><span>WhatsApp terbuka dengan pesan yang sudah terisi.</span></li>' +
+    '<li><b>3. Kirim link</b><span>Kirim link akun atau video, lalu lanjut pembayaran.</span></li>' +
     '</ol>';
 
   function setMeta(title, desc) {
@@ -270,7 +277,7 @@ a{color:inherit}
         '<p>Pilih paket untuk TikTok, Instagram, atau YouTube. Klik Pesan Sekarang dan lanjutkan lewat WhatsApp.</p>' +
         orderBtn("layanan sosial media") +
       '</section>' +
-      ORDER.map(function (s) { return panelHtml(s, true); }).join("") +
+      ORDER.map(sectionHtml).join("") +
       STEPS;
   }
 
@@ -285,7 +292,7 @@ a{color:inherit}
         '<p>' + p.desc + '</p>' +
         orderBtn(p.name) +
       '</section>' +
-      panelHtml(slug, false) +
+      '<section class="section solo" aria-label="Daftar harga ' + p.name + '">' + listHtml(slug) + '</section>' +
       STEPS;
   }
 
