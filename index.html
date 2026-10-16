@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BmSkySocial</title>
 <meta name="description" content="Layanan sosial media TikTok, Instagram, dan YouTube dengan harga jelas per paket. Pesan lewat WhatsApp.">
-<meta name="theme-color" content="#B3D6FF">
+<meta name="theme-color" content="#A9D0FF">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231A64DB'/%3E%3Cpath d='M18 44V20h14a7 7 0 0 1 3 13 7.5 7.5 0 0 1-3 11H18z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +16,8 @@
   --ink-soft:#35568A;
   --blue:#1A64DB;
   --blue-dark:#1455B8;
+  --tint:#DCEBFF;
   --rule:rgba(7,33,77,.16);
-  --rule-soft:rgba(7,33,77,.1);
   --display:'Bricolage Grotesque','Figtree',system-ui,sans-serif;
   --body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
@@ -27,7 +27,7 @@ body{
   font-family:var(--body);
   font-size:1.0625rem;
   color:var(--ink);
-  line-height:1.55;
+  line-height:1.5;
   min-height:100vh;
   position:relative;
   overflow-x:hidden;
@@ -44,7 +44,7 @@ body::before{
     radial-gradient(320px 100px at 66% 40%,rgba(255,255,255,.5),transparent 70%);
 }
 a{color:inherit}
-.wrap{position:relative;max-width:980px;margin:0 auto;padding:0 1.4rem}
+.wrap{position:relative;max-width:980px;margin:0 auto;padding:0 1.2rem}
 
 /* header */
 .top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.9rem 1.5rem;padding:1.4rem 0 0}
@@ -58,14 +58,14 @@ a{color:inherit}
 .nav a[aria-current="page"]{border-bottom-color:var(--ink)}
 
 /* hero */
-.hero{padding:4rem 0 3rem;animation:rise .7s ease both}
+.hero{padding:3.6rem 0 2.6rem;animation:rise .7s ease both}
 .hero h1{
   font-family:var(--display);font-weight:800;
-  font-size:clamp(2.4rem,7.4vw,4.6rem);line-height:1.02;letter-spacing:-.035em;
+  font-size:clamp(2.3rem,7.4vw,4.4rem);line-height:1.03;letter-spacing:-.035em;
   max-width:16ch;
 }
-.hero p{margin-top:1.2rem;max-width:44ch;font-size:1.2rem;color:var(--ink-soft)}
-.hero .btn{margin-top:1.8rem}
+.hero p{margin-top:1.1rem;max-width:44ch;font-size:1.15rem;color:var(--ink-soft)}
+.hero .btn{margin-top:1.7rem}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 /* buttons */
@@ -74,39 +74,45 @@ a{color:inherit}
   font:700 1rem var(--body);text-decoration:none;white-space:nowrap;
   padding:.85rem 1.5rem;border-radius:999px;border:2px solid var(--blue);
   background:var(--blue);color:#fff;cursor:pointer;
-  transition:background .15s,color .15s,transform .15s;
+  transition:background .15s,transform .15s;
 }
 .btn:hover{background:var(--blue-dark);border-color:var(--blue-dark)}
 .btn:active{transform:scale(.97)}
 .btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.btn.ghost{background:transparent;color:var(--blue);padding:.55rem 1.1rem;font-size:.95rem}
-.btn.ghost:hover{background:var(--blue);color:#fff}
 :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 
-/* service sections: no boxes, only rules */
-.section{
-  display:grid;grid-template-columns:230px 1fr;gap:1.4rem 3.5rem;
-  padding:2.6rem 0 2.2rem;border-top:2px solid var(--ink);
-}
-.section.solo{grid-template-columns:1fr;max-width:760px}
-.section-head h2{font-family:var(--display);font-weight:800;font-size:2.1rem;line-height:1.1;letter-spacing:-.03em}
-.section-head p{margin-top:.6rem;color:var(--ink-soft);font-size:1rem}
-.section-head a{display:inline-block;margin-top:.9rem;color:var(--blue);font-weight:700;text-underline-offset:4px}
+/* section heading */
+.section{padding:1.2rem 0 1.6rem}
+.section-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.3rem 1rem;margin-bottom:1rem}
+.section-head h2{font-family:var(--display);font-weight:800;font-size:2rem;line-height:1.1;letter-spacing:-.03em}
+.section-head a{color:var(--blue);font-weight:700;text-underline-offset:4px}
 
-.row{
-  display:grid;grid-template-columns:28px 1fr auto auto;align-items:center;gap:.4rem 1.2rem;
-  padding:1.15rem 0;border-bottom:1px solid var(--rule-soft);
+/* card grid: kiri kanan */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.card{
+  display:flex;flex-direction:column;
+  background:#fff;
+  border:1px solid rgba(26,100,219,.14);
+  border-radius:22px;
+  padding:1.15rem 1.15rem 1.1rem;
+  box-shadow:0 14px 32px -22px rgba(10,50,120,.45);
 }
-.row:first-child{padding-top:.2rem}
-.row:last-child{border-bottom:0}
-.ico{color:var(--blue);display:grid;place-items:center}
+.ico{
+  width:46px;height:46px;border-radius:14px;background:var(--tint);color:var(--blue);
+  display:grid;place-items:center;margin-bottom:1rem;
+}
 .ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.name{font-weight:700;font-size:1.15rem;line-height:1.3}
-.qty{color:var(--ink-soft);font-size:1rem}
-.price{font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-.02em;text-align:right;white-space:nowrap}
+.name{font-weight:700;font-size:1.1rem;line-height:1.3}
+.qty{color:var(--ink-soft);font-size:1rem;margin-top:.15rem}
+.price{
+  font-family:var(--display);font-weight:800;font-size:1.75rem;line-height:1.1;letter-spacing:-.02em;
+  margin:1.1rem 0 1rem;white-space:nowrap;
+}
+.card .btn{margin-top:auto;width:100%;padding:.7rem .6rem;font-size:.97rem}
+.card .btn svg{display:none}
 
 /* how to order */
-.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;padding:2.4rem 0 0;border-top:2px solid var(--ink)}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1.6rem;padding:2.2rem 0 0;border-top:2px solid var(--ink)}
 .steps b{display:block;font-family:var(--display);font-size:1.25rem;margin-bottom:.2rem}
 .steps span{color:var(--ink-soft)}
 
@@ -117,21 +123,19 @@ a{color:inherit}
 .missing h1{font-family:var(--display);font-size:2.3rem;font-weight:800;letter-spacing:-.03em}
 .missing p{margin:.6rem 0 1.4rem;color:var(--ink-soft)}
 
-@media (max-width:760px){
-  .section{grid-template-columns:1fr;gap:1.2rem;padding:2rem 0 1.6rem}
+@media (min-width:860px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
 }
 @media (max-width:560px){
   body{font-size:1rem}
-  .hero{padding:2.6rem 0 2.2rem}
-  .row{
-    grid-template-columns:28px 1fr auto;
-    grid-template-areas:"i t p" "b b b";
-    gap:.8rem 1rem;
-  }
-  .row .ico{grid-area:i}
-  .row .info{grid-area:t}
-  .row .price{grid-area:p}
-  .row .btn{grid-area:b;width:100%}
+  .hero{padding:2.4rem 0 2rem}
+  .section-head h2{font-size:1.7rem}
+  .grid{gap:.8rem}
+  .card{padding:1rem .9rem .9rem;border-radius:20px}
+  .ico{width:42px;height:42px;margin-bottom:.8rem}
+  .name{font-size:1.02rem}
+  .qty{font-size:.92rem}
+  .price{font-size:1.45rem}
   .steps{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
@@ -215,33 +219,32 @@ a{color:inherit}
     return "Rp\u00A0" + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
 
-  function orderBtn(service, extraClass) {
-    return '<a class="btn ' + (extraClass || "") + '" href="' + waLink(service) +
+  function orderBtn(service) {
+    return '<a class="btn" href="' + waLink(service) +
       '" target="_blank" rel="noopener">' + icon("chat") + 'Pesan Sekarang</a>';
   }
 
-  function rowHtml(item) {
+  function cardHtml(item) {
     var service = item.name + " paket " + item.qty;
-    return '<div class="row">' +
+    return '<article class="card">' +
       '<div class="ico">' + icon(item.icon) + '</div>' +
-      '<div class="info"><div class="name">' + item.name + '</div>' +
-      '<div class="qty">' + item.qty + ' ' + item.unit + ' per paket</div></div>' +
+      '<h3 class="name">' + item.name + '</h3>' +
+      '<div class="qty">' + item.qty + ' ' + item.unit + '</div>' +
       '<div class="price">' + rupiah(item.price) + '</div>' +
-      orderBtn(service, "ghost") +
-      '</div>';
+      orderBtn(service) +
+      '</article>';
   }
 
-  function listHtml(slug) {
-    return '<div class="list">' + DATA[slug].items.map(rowHtml).join("") + '</div>';
+  function gridHtml(slug) {
+    return '<div class="grid">' + DATA[slug].items.map(cardHtml).join("") + '</div>';
   }
 
   function sectionHtml(slug) {
     var p = DATA[slug];
     return '<section class="section" aria-labelledby="h-' + slug + '">' +
       '<div class="section-head"><h2 id="h-' + slug + '">' + p.name + '</h2>' +
-      '<p>' + p.desc + '</p>' +
       '<a href="/service/' + slug + '">Buka halaman ' + p.name + '</a></div>' +
-      listHtml(slug) + '</section>';
+      gridHtml(slug) + '</section>';
   }
 
   var STEPS = '<ol class="steps">' +
@@ -292,7 +295,7 @@ a{color:inherit}
         '<p>' + p.desc + '</p>' +
         orderBtn(p.name) +
       '</section>' +
-      '<section class="section solo" aria-label="Daftar harga ' + p.name + '">' + listHtml(slug) + '</section>' +
+      '<section class="section" aria-label="Daftar harga ' + p.name + '">' + gridHtml(slug) + '</section>' +
       STEPS;
   }
 
