@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BmSkySocial</title>
-<meta name="description" content="Layanan sosial media TikTok, Instagram, dan YouTube dengan harga jelas per paket. Pesan lewat WhatsApp.">
+<meta name="description" content="Layanan sosial media TikTok, Instagram, YouTube dan akun premium dengan harga jelas. Pesan lewat WhatsApp.">
 <meta name="theme-color" content="#A9D0FF">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231A64DB'/%3E%3Cpath d='M18 44V20h14a7 7 0 0 1 3 13 7.5 7.5 0 0 1-3 11H18z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +17,8 @@
   --blue:#1A64DB;
   --blue-dark:#1455B8;
   --tint:#DCEBFF;
+  --ok:#0E6B43;
+  --ok-bg:#DDF5E8;
   --rule:rgba(7,33,77,.16);
   --display:'Bricolage Grotesque','Figtree',system-ui,sans-serif;
   --body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
@@ -97,17 +99,27 @@ a{color:inherit}
   padding:1.15rem 1.15rem 1.1rem;
   box-shadow:0 14px 32px -22px rgba(10,50,120,.45);
 }
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem;margin-bottom:1rem}
 .ico{
   width:46px;height:46px;border-radius:14px;background:var(--tint);color:var(--blue);
-  display:grid;place-items:center;margin-bottom:1rem;
+  display:grid;place-items:center;flex:none;
 }
 .ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.badge{
+  font-size:.85rem;font-weight:700;color:var(--ok);background:var(--ok-bg);
+  padding:.2rem .65rem;border-radius:999px;white-space:nowrap;
+}
 .name{font-weight:700;font-size:1.1rem;line-height:1.3}
 .qty{color:var(--ink-soft);font-size:1rem;margin-top:.15rem}
+.warranty{color:var(--ink);font-size:.95rem;font-weight:600;margin-top:.5rem}
 .price{
   font-family:var(--display);font-weight:800;font-size:1.75rem;line-height:1.1;letter-spacing:-.02em;
-  margin:1.1rem 0 1rem;white-space:nowrap;
+  margin:1.1rem 0 .9rem;white-space:nowrap;
 }
+.notes{margin-bottom:1rem}
+.notes summary{cursor:pointer;color:var(--blue);font-weight:700;font-size:.97rem;padding:.15rem 0}
+.notes ul{margin-top:.5rem;padding-left:1.1rem;color:var(--ink-soft);font-size:.95rem;line-height:1.5}
+.notes li+li{margin-top:.3rem}
 .card .btn{margin-top:auto;width:100%;padding:.7rem .6rem;font-size:.97rem}
 .card .btn svg{display:none}
 
@@ -132,9 +144,11 @@ a{color:inherit}
   .section-head h2{font-size:1.7rem}
   .grid{gap:.8rem}
   .card{padding:1rem .9rem .9rem;border-radius:20px}
-  .ico{width:42px;height:42px;margin-bottom:.8rem}
+  .card-top{margin-bottom:.8rem}
+  .ico{width:42px;height:42px}
   .name{font-size:1.02rem}
   .qty{font-size:.92rem}
+  .warranty{font-size:.9rem}
   .price{font-size:1.45rem}
   .steps{grid-template-columns:1fr}
 }
@@ -153,7 +167,7 @@ a{color:inherit}
   <main id="app"></main>
   <footer class="foot">
     <span>Pesanan diproses lewat WhatsApp <strong>083132988099</strong></span>
-    <span>Tidak perlu password akun, cukup kirim link.</span>
+    <span>Baca catatan dan garansi di tiap produk sebelum memesan.</span>
   </footer>
 </div>
 
@@ -174,6 +188,9 @@ a{color:inherit}
     favorites: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
     comments: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
     heart: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+    palette: '<circle cx="13.5" cy="6.5" r="1"/><circle cx="17.5" cy="10.5" r="1"/><circle cx="8.5" cy="7.5" r="1"/><circle cx="6.5" cy="12.5" r="1"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.2-.8-.4-1.1-.3-.3-.5-.7-.5-1.1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-4.9-4.5-9-10-9z"/>',
+    sparkle: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"/>',
+    film: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 12h18"/>',
     chat: '<path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.5 8.5 0 1 1 21 11.5z"/>'
   };
 
@@ -181,10 +198,11 @@ a{color:inherit}
     return '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICONS[name] + '</svg>';
   }
 
-  // price = harga (Rupiah) untuk satu paket, qty = jumlah per paket
+  // price = harga (Rupiah). Item sosmed: qty + unit. Item premium: sub, service, tag, warranty, notes.
   var DATA = {
     tiktok: {
       name: "TikTok",
+      title: "Layanan TikTok",
       desc: "Views, likes, followers, favorites, dan comments-hearts untuk video TikTok kamu.",
       items: [
         { name: "TikTok Views", icon: "views", price: 2000, qty: "1.000", unit: "views" },
@@ -196,6 +214,7 @@ a{color:inherit}
     },
     instagram: {
       name: "Instagram",
+      title: "Layanan Instagram",
       desc: "Tambah likes dan followers untuk akun dan postingan Instagram.",
       items: [
         { name: "Instagram Likes", icon: "heart", price: 2000, qty: "500", unit: "likes" },
@@ -204,15 +223,78 @@ a{color:inherit}
     },
     youtube: {
       name: "YouTube",
+      title: "Layanan YouTube",
       desc: "Likes, views, dan subscribe untuk video dan channel YouTube.",
       items: [
         { name: "YouTube Likes", icon: "likes", price: 5000, qty: "100", unit: "likes" },
         { name: "YouTube Views", icon: "views", price: 2000, qty: "100", unit: "views" },
         { name: "YouTube Subscribe", icon: "subscribe", price: 5000, qty: "50", unit: "subscribe" }
       ]
+    },
+    premium: {
+      name: "Akun Premium",
+      nav: "Premium",
+      title: "Akun Premium",
+      order: "akun premium",
+      desc: "Canva Pro Edu, Gemini Pro, dan Alight Motion. Garansi dan syarat tertera di tiap produk.",
+      items: [
+        {
+          name: "Canva Pro Edu Invite", icon: "palette", price: 10000,
+          sub: "Lifetime, ikut masa aktif akun utama",
+          service: "CANVA PRO EDU INVITE - LIFETIME",
+          tag: "Ready", warranty: "Garansi 1 bulan",
+          notes: [
+            "Masa aktif mengikuti akun utama (tidak ada batas waktu tertentu, aktif dalam waktu yang lama)",
+            "Via invite akun",
+            "Bisa pindahkan desain lama",
+            "Bisa upload font, brand kit, dan color palette (termasuk fitur PPT dan lainnya)"
+          ]
+        },
+        {
+          name: "Canva Pro Edu Head", icon: "palette", price: 45000,
+          sub: "Lifetime",
+          service: "CANVA PRO EDU HEAD - LIFETIME",
+          tag: "Ready", warranty: "Garansi 7 hari",
+          notes: [
+            "Tujuan diisi dengan email pengguna, contoh: jamal@gmail.com",
+            "Bisa invite sampai 500 member, fitur Pro terbuka",
+            "Bisa pindahkan desain lama"
+          ]
+        },
+        {
+          name: "Gemini 12 Bulan", icon: "sparkle", price: 12000,
+          sub: "Via invite",
+          service: "GEMINI 12 BULAN - INVITE",
+          tag: "Ready", warranty: "Garansi backfree 1x24 jam",
+          notes: [
+            "Garansi backfree 1x24 jam",
+            "Tidak ada garansi limit"
+          ]
+        },
+        {
+          name: "Gemini Pro 18 Bulan", icon: "sparkle", price: 20000,
+          sub: "Via redeem code",
+          service: "GEMINI PRO 18 BULAN - REDEEM CODE",
+          tag: "Ready", warranty: "Cukup klik link satu kali",
+          notes: [
+            "Cukup klik link satu kali",
+            "Tidak perlu pembayaran atau VCC"
+          ]
+        },
+        {
+          name: "Alight Motion Premium", icon: "film", price: 3000,
+          sub: "1 Tahun",
+          service: "Alight Motion Premium 1 Tahun",
+          tag: "Ready", warranty: "Garansi 3 bulan",
+          notes: [
+            "Tujuan diisi dengan email pengguna, contoh: jamal@gmail.com",
+            "Garansi 3 bulan"
+          ]
+        }
+      ]
     }
   };
-  var ORDER = ["tiktok", "instagram", "youtube"];
+  var ORDER = ["tiktok", "instagram", "youtube", "premium"];
 
   // Format: Rp 1.000 (titik sebagai pemisah ribuan, tidak bergantung locale HP)
   function rupiah(n) {
@@ -225,12 +307,22 @@ a{color:inherit}
   }
 
   function cardHtml(item) {
-    var service = item.name + " paket " + item.qty;
+    var service = item.service || (item.name + " paket " + item.qty);
+    var sub = item.sub || (item.qty + " " + item.unit);
+    var notes = "";
+    if (item.notes && item.notes.length) {
+      notes = '<details class="notes"><summary>Lihat catatan</summary><ul>' +
+        item.notes.map(function (n) { return "<li>" + n + "</li>"; }).join("") +
+        "</ul></details>";
+    }
     return '<article class="card">' +
-      '<div class="ico">' + icon(item.icon) + '</div>' +
+      '<div class="card-top"><div class="ico">' + icon(item.icon) + '</div>' +
+      (item.tag ? '<span class="badge">' + item.tag + '</span>' : '') + '</div>' +
       '<h3 class="name">' + item.name + '</h3>' +
-      '<div class="qty">' + item.qty + ' ' + item.unit + '</div>' +
+      '<div class="qty">' + sub + '</div>' +
+      (item.warranty ? '<div class="warranty">' + item.warranty + '</div>' : '') +
       '<div class="price">' + rupiah(item.price) + '</div>' +
+      notes +
       orderBtn(service) +
       '</article>';
   }
@@ -248,9 +340,9 @@ a{color:inherit}
   }
 
   var STEPS = '<ol class="steps">' +
-    '<li><b>1. Pilih layanan</b><span>Cari paket yang kamu butuhkan di daftar harga.</span></li>' +
+    '<li><b>1. Pilih produk</b><span>Cari layanan atau akun yang kamu butuhkan di daftar harga.</span></li>' +
     '<li><b>2. Klik Pesan Sekarang</b><span>WhatsApp terbuka dengan pesan yang sudah terisi.</span></li>' +
-    '<li><b>3. Kirim link</b><span>Kirim link akun atau video, lalu lanjut pembayaran.</span></li>' +
+    '<li><b>3. Kirim data pesanan</b><span>Kirim link atau email sesuai catatan produk, lalu lanjut pembayaran.</span></li>' +
     '</ol>';
 
   function setMeta(title, desc) {
@@ -262,7 +354,7 @@ a{color:inherit}
   function renderNav(active) {
     var links = [{ href: "/", label: "Semua", key: "all" }].concat(
       ORDER.map(function (s) {
-        return { href: "/service/" + s, label: DATA[s].name, key: s };
+        return { href: "/service/" + s, label: DATA[s].nav || DATA[s].name, key: s };
       })
     );
     document.getElementById("nav").innerHTML = links.map(function (l) {
@@ -272,13 +364,13 @@ a{color:inherit}
 
   function renderHome() {
     renderNav("all");
-    setMeta("BmSkySocial | Layanan TikTok, Instagram, dan YouTube",
-      "Daftar harga layanan sosial media TikTok, Instagram, dan YouTube. Pesan lewat WhatsApp.");
+    setMeta("BmSkySocial | Layanan Sosial Media dan Akun Premium",
+      "Daftar harga layanan TikTok, Instagram, YouTube, dan akun premium. Pesan lewat WhatsApp.");
     document.getElementById("app").innerHTML =
       '<section class="hero">' +
-        '<h1>Layanan sosial media dengan harga yang jelas</h1>' +
-        '<p>Pilih paket untuk TikTok, Instagram, atau YouTube. Klik Pesan Sekarang dan lanjutkan lewat WhatsApp.</p>' +
-        orderBtn("layanan sosial media") +
+        '<h1>Layanan sosial media dan akun premium</h1>' +
+        '<p>Pilih paket untuk TikTok, Instagram, YouTube, atau akun premium. Klik Pesan Sekarang dan lanjutkan lewat WhatsApp.</p>' +
+        orderBtn("layanan BmSkySocial") +
       '</section>' +
       ORDER.map(sectionHtml).join("") +
       STEPS;
@@ -287,13 +379,13 @@ a{color:inherit}
   function renderPlatform(slug) {
     var p = DATA[slug];
     renderNav(slug);
-    setMeta("Layanan " + p.name + " | BmSkySocial",
-      "Daftar harga layanan " + p.name + " di BmSkySocial. Pesan lewat WhatsApp.");
+    setMeta(p.title + " | BmSkySocial",
+      "Daftar harga " + p.title + " di BmSkySocial. Pesan lewat WhatsApp.");
     document.getElementById("app").innerHTML =
       '<section class="hero">' +
-        '<h1>Layanan ' + p.name + '</h1>' +
+        '<h1>' + p.title + '</h1>' +
         '<p>' + p.desc + '</p>' +
-        orderBtn(p.name) +
+        orderBtn(p.order || p.name) +
       '</section>' +
       '<section class="section" aria-label="Daftar harga ' + p.name + '">' + gridHtml(slug) + '</section>' +
       STEPS;
